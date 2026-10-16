@@ -75,7 +75,8 @@ traily/
 ### Branches
 
 ```sh
-main                : Production — merge par PR uniquement
+main                : Production — PR depuis develop uniquement (bloqué par la CI)
+develop             : Intégration — cible des PR de feature/fix
 feat/TRA-XX-nom     : Nouvelle fonctionnalité
 fix/TRA-XX-nom      : Correction de bug
 hotfix/TRA-XX-nom   : Correction urgente en production

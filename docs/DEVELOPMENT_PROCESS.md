@@ -8,20 +8,19 @@ Traily suit un **Scrum adapté** : les principes agiles sont appliqués avec pra
 
 ## 1. Cycle de développement
 
-Un **sprint = 2 mois**. Chaque sprint correspond à un ensemble cohérent de fonctionnalités livrables.
+Un **sprint = 4 semaines** (un cycle Linear, du lundi au dimanche). L'équipe a un vendredi d'école par semaine : le travail se fait ce jour-là et sur le temps libre. Les follow-ups (FU) de l'école servent de démonstration et sont suivis par les milestones Linear (voir [LINEAR_GUIDE.md](./LINEAR_GUIDE.md)).
 
 ```
-Sprint (2 mois)
+Sprint (4 semaines)
 │
-├── Semaine 1 — Sprint Planning
-│   └── Découpage du backlog, attribution des tâches
+├── Vendredis 1 à 3 — Développement
+│   ├── Travail autonome par domaine (frontend / backend / IA / devops)
+│   └── Point Linear de 10 min (board du cycle + % du FU en cours)
 │
-├── Semaines 2 à 7 — Développement
-│   └── Travail autonome par domaine (frontend / backend / IA / devops)
-│
-└── Semaine 8 — Sprint Review + Rétrospective
+└── Vendredi 4 — Sprint Review + Rétrospective + Sprint Planning
     ├── Démonstration des fonctionnalités livrées
-    └── Identification des points d'amélioration
+    ├── Identification des points d'amélioration
+    └── Découpage et attribution des tâches du sprint suivant
 ```
 
 ---
@@ -30,7 +29,8 @@ Sprint (2 mois)
 
 | Cérémonie | Fréquence | Objectif |
 |---|---|---|
-| **Sprint Planning** | Début de chaque sprint | Prioriser et découper le backlog, distribuer les tâches |
+| **Sprint Planning** | Dernier vendredi du sprint précédent | Prioriser et découper le backlog, distribuer les tâches |
+| **Point Linear** | Chaque vendredi | 10 min sur le board du cycle et le % du FU en cours |
 | **Sprint Review** | Fin de chaque sprint | Valider ce qui a été livré, ajuster les priorités du prochain sprint |
 | **Rétrospective** | Fin de chaque sprint | Identifier ce qui a bien fonctionné et ce qui doit changer dans le process |
 | **Syncs ad hoc** | À la demande | Déblocage ponctuel, décision d'architecture impactant plusieurs membres |
@@ -52,6 +52,15 @@ Pas de daily standup — la communication passe par les PRs, les commentaires de
 
 ### Branches
 
+Deux branches permanentes (backend et Client) :
+
+| Branche | Rôle |
+|---|---|
+| `develop` | Intégration : toutes les PR de travail y arrivent |
+| `main` | Production : ne reçoit que des PR depuis `develop` (bloqué par la CI sinon) |
+
+Branches de travail, créées depuis `develop` :
+
 | Préfixe | Usage |
 |---|---|
 | `feat/` | Nouvelle fonctionnalité |
@@ -61,7 +70,7 @@ Pas de daily standup — la communication passe par les PRs, les commentaires de
 | `docs/` | Documentation uniquement |
 | `test/` | Ajout ou correction de tests |
 
-Le nom de branche suit le ticket Linear : `feat/TRAIL-42-add-waypoint-endpoint`.
+Le nom de branche suit le ticket Linear : `feat/TRA-42-add-waypoint-endpoint`.
 
 ### Cycle d'une tâche
 
@@ -69,24 +78,28 @@ Le nom de branche suit le ticket Linear : `feat/TRAIL-42-add-waypoint-endpoint`.
 Ticket Linear
       │
       ▼
-Branche feat/fix/chore depuis main
+Branche feat/fix/chore depuis develop
       │
       ▼
 Développement local + tests
       │
       ▼
-Pull Request → CI automatique (voir section 6)
+Pull Request vers develop → CI automatique (voir section 6)
       │
       ▼
 Revue par au moins 1 autre membre
       │
       ▼
-Merge sur main → déploiement automatique
+Merge sur develop
+      │
+      ▼
+PR develop → main (release) → merge sur main
 ```
 
 ### Règles de merge
 
-- **Aucun commit direct sur `main`** — toujours passer par une PR.
+- **Aucun commit direct sur `main` ni sur `develop`** — toujours passer par une PR.
+- `main` n'accepte que des PR dont la source est `develop` (vérifié par la CI backend et Client).
 - Toute PR doit passer les checks CI **et** être approuvée par au moins un autre développeur.
 - Une PR = une fonctionnalité ou un fix — pas de PRs fourre-tout.
 
@@ -112,17 +125,19 @@ Un hotfix traite une anomalie critique en production (service down, faille de s�
 Anomalie critique détectée en production
       │
       ▼
-Branche hotfix/<description> depuis main
+Branche hotfix/TRA-XX-<description> depuis develop
       │
       ▼
 Correction + test ciblé
       │
       ▼
-PR → CI + revue accélérée (1 approbation)
+PR vers develop → CI + revue accélérée (1 approbation)
       │
       ▼
-Merge sur main → déploiement automatique immédiat
+PR develop → main immédiate
 ```
+
+La CI refuse toute PR vers `main` qui ne vient pas de `develop` : un hotfix passe donc lui aussi par `develop`.
 
 Les hotfixes contournent la priorisation du backlog — ils sont traités en priorité absolue par le membre le plus disponible, validés par le coordinateur.
 
@@ -181,7 +196,7 @@ Le passage `staging → production` est le seul déploiement qui reste manuel �
 
 Une tâche est **DONE** uniquement si les critères de la [Definition of Done](./DEFINITION_OF_DONE.md) sont tous remplis :
 
-- Code développé et conforme aux Quality Plans ([Backend](./QUALITY_PLAN_BACKEND.md), [Frontend](./QUALITY_PLAN_FRONTEND.md), [IA](./QUALITY_PLAN_AI_SERVICES.md))
+- Code développé et conforme aux Quality Plans ([Backend](./QUALITY_PLAN_BACKEND.md), [Frontend](./QUALITY_PLAN_FRONTEND.md)) ; services IA : checks CI de la section 6
 - Tests ajoutés si nécessaire, tous au vert
 - Pipeline CI au vert
 - PR revue et approuvée par au moins un autre membre

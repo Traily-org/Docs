@@ -1,5 +1,7 @@
 # Backlog — Traily
 
+> **Statut : cadrage initial, figé.** Le suivi vivant (périmètre par FU, avancement, découpage en tâches) est dans Linear, projet Traily. Ce document n'est plus mis à jour.
+
 > Backlog produit construit par croisement des trois référentiels de cadrage : **WBS** ([WBS.md](./WBS.md), le _quoi_ — livrables et tâches), **PBS** ([PBS.md](./PBS.md), le _où_ — décomposition produit), **OBS** ([OBS.md](./OBS.md), le _qui_ — équipe et ownership). Suit les conventions [LINEAR_GUIDE.md](./LINEAR_GUIDE.md) pour l'import direct dans Linear.
 
 ---
