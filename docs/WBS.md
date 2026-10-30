@@ -46,7 +46,7 @@ Randonneur occasionnel ou régulier, curieux de nature, qui veut une expérience
 7. **Cadre éthique & sécurité** — zones protégées, alertes, pédagogie
 8. **Backend & IA** — APIs cœur, micro-services, agrégation de données
 9. **Infrastructure** — stockage, CI/CD, monitoring, environnements
-10. **Gestion de projet & qualité** — pilotage, tests, déploiement
+10. **Gestion de projet & qualité** — pilotage, tests, déploiement, documentation projet
 11. **Fonctionnalités bonus (hors MVP)** — point d'intérêt communautaire, avatar & compagnon, portage SmartWatch _(non prioritaire pour le MVP v1 — voir [BACKLOG.md](./BACKLOG.md) Epic 11)_
 
 ---
@@ -110,7 +110,8 @@ Traily — Application mobile v1 (MVP)
 ├── 10. Gestion projet & qualité
 │   ├── Pilotage projet
 │   ├── Tests
-│   └── Déploiement & lancement
+│   ├── Déploiement & lancement
+│   └── Documentation projet
 │
 └── 11. Fonctionnalités bonus (hors MVP)
     ├── Point d'intérêt communautaire
@@ -652,6 +653,19 @@ Traily — Application mobile v1 (MVP)
 - Publication en review sur les stores
 - Rédaction de la documentation utilisateur
 - Plan de communication de lancement
+
+### 10.4 Documentation projet
+
+**Livrable** : Documentation projet à jour, versionnée dans le dépôt `docs` et accessible à toute l'équipe.
+
+**Tâches :**
+
+- Rédaction des documents de cadrage (PBS, WBS, OBS, backlog initial)
+- Rédaction des documents de process et de qualité (process de développement, Definition of Done, Quality Plans, guide Linear, outils)
+- Rédaction de la documentation technique (architecture, exigences matérielles)
+- Guide d'ordre de lecture des documents
+- Mise à jour de la documentation concernée à chaque PR modifiant une interface ou un comportement
+- Synchronisation du dépôt miroir de la documentation
 
 ---
 
@@ -1280,6 +1294,22 @@ Traily — Application mobile v1 (MVP)
 - App validée par les processus de review Apple/Google sans rejet bloquant
 - Documentation utilisateur couvrant 100% des fonctionnalités principales du MVP
 - Lancement accompagné d'au moins un canal de communication actif
+
+### 10.4 Documentation projet
+
+**Résumé** : Documentation interne du projet (cadrage, organisation, process, qualité, technique), tenue à jour tout au long du projet.
+
+**Exigences fonctionnelles**
+
+- Chaque document a un rôle clair et un owner identifié
+- Un guide indique l'ordre de lecture et le contenu de chaque document
+- La documentation reflète l'organisation et le fonctionnement réels de l'équipe
+
+**Critères d'acceptation**
+
+- OBS et process de développement alignés sur l'organisation réelle à chaque Sprint Review
+- Toute PR modifiant une interface ou un comportement inclut la mise à jour du document concerné
+- Dépôt miroir synchronisé avec le dépôt principal (aucun écart détecté par la vérification)
 
 ---
 

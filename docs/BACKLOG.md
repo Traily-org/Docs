@@ -12,7 +12,7 @@ Chaque ligne du backlog est une **Story** (= future Epic Linear regroupant un ou
 
 1. **WBS** → le découpage Livrable/Tâches (Partie 3 de [WBS.md](./WBS.md)) donne le contenu de la Story et sa liste de tâches à transformer en tickets Linear.
 2. **PBS** → la branche produit ([PBS.md](./PBS.md)) donne le **Domaine** (Frontend mobile / Backend & IA / Infrastructure / Communauté & Modération / Cadre éthique) et vérifie qu'aucun nœud du produit n'est orphelin de backlog.
-3. **OBS** → la table _Ownership des modules produit_ et les fiches de rôle ([OBS.md](./OBS.md)) donnent l'**Assignee** par défaut (UI / Backend / IA) et signalent les Stories dépendantes d'un poste encore ouvert.
+3. **OBS** → la table _Ownership des modules produit_ et les fiches de rôle ([OBS.md](./OBS.md)) donnent l'**Assignee** par défaut (UI / Backend / IA).
 
 ```
 WBS (livrable + tâches)  ──┐
@@ -42,16 +42,16 @@ Chaque Story ci-dessous est formulée en **user story** (« En tant que ..., je 
 | # WBS | Epic                             | Branche PBS                                 | Owner principal (OBS)                                   | Priorité dominante |
 | ----- | -------------------------------- | ------------------------------------------- | ------------------------------------------------------- | ------------------ |
 | 1     | Socle randonnée                  | 📱 Application Mobile (GEO, CAM)            | Maxim (backend/natif) · Lucas (UI)                      | Must               |
-| 2     | Système d'espèces                | ⚙️ Backend & IA (IAS) + 📱 UI4              | Maxim/Yohan · Arthur J. (IA)                            | Must → Should      |
+| 2     | Système d'espèces                | ⚙️ Backend & IA (IAS) + 📱 UI4              | Maxim/Yohan · Lunelys (IA)                              | Must → Should      |
 | 3     | Collections personnelles         | 📱 Application Mobile (COL)                 | Lucas (UI) · Maxim/Yohan (BE)                           | Must               |
 | 4     | Gamification                     | 📱 Application Mobile (COL4, COL5)          | Lucas (UI) · Maxim/Yohan (BE)                           | Should             |
-| 5     | Communauté & Équipes             | 👥 Communauté & Modération (TEAM, FEED)     | 🔎 Recrue 1 _(poste ouvert)_                            | Should             |
-| 6     | Modération                       | 👥 Communauté & Modération (MOD)            | 🔎 Recrue 2 _(poste ouvert)_ · Arthur J. (IA)           | Should             |
+| 5     | Communauté & Équipes             | 👥 Communauté & Modération (TEAM, FEED)     | Hélène                                                  | Should             |
+| 6     | Modération                       | 👥 Communauté & Modération (MOD)            | Alexis · Lunelys (IA)                                   | Should             |
 | 7     | Cadre éthique & sécurité         | 🛡️ Cadre éthique & nature (ZON, ALERT, ADV) | Lucas (UI) · Arthur B. (BE)                             | Could              |
-| 8     | Backend & IA                     | ⚙️ Backend & IA (API, IAS)                  | Maxim/Yohan (API) · Arthur J. (IA)                      | Must → Should      |
+| 8     | Backend & IA                     | ⚙️ Backend & IA (API, IAS)                  | Maxim/Yohan (API) · Lunelys (IA)                        | Must → Should      |
 | 9     | Infrastructure                   | 🏗️ Infrastructure (STO, CI, MON, SEC)       | Arthur B. · Florian                                     | Must               |
 | 10    | Gestion de projet & qualité      | — (transversal)                             | Florian · Yohan (E2E) · toute l'équipe                  | Must               |
-| 11    | Fonctionnalités bonus (hors MVP) | _hors PBS actuel — à intégrer si retenues_  | Lucas · Maxim/Yohan · Recrue 1 · à définir (SmartWatch) | Bonus              |
+| 11    | Fonctionnalités bonus (hors MVP) | _hors PBS actuel — à intégrer si retenues_  | Lucas · Maxim/Yohan · Hélène · à définir (SmartWatch)   | Bonus              |
 
 ---
 
@@ -148,7 +148,7 @@ _(PBS : Backend & IA → IAS ; Application Mobile → UI4)_
 
 #### 2.2 · Génération de listes d'espèces observables
 
-`Feature` · `Backend / IA` · **Must** · Owner : Maxim (BE) · Arthur J. (scoring) · Lucas (UI)
+`Feature` · `Backend / IA` · **Must** · Owner : Maxim (BE) · Lunelys (scoring) · Lucas (UI)
 
 > **En tant que** randonneur, **je peux** consulter la liste des espèces observables sur une trace donnée, calculée selon la localisation, la saison et les données communautaires, **afin de** savoir quoi chercher pendant ma randonnée.
 
@@ -163,7 +163,7 @@ _(PBS : Backend & IA → IAS ; Application Mobile → UI4)_
 
 #### 2.3 · Identification d'espèce par photo (IA)
 
-`Feature` · `IA` · **Should** · Owner : Arthur J. (modèle + API FastAPI) · Maxim/Yohan (intégration) · Lucas (UI)
+`Feature` · `IA` · **Should** · Owner : Lunelys (modèle + API FastAPI) · Maxim/Yohan (intégration) · Lucas (UI)
 
 > **En tant que** randonneur, **je peux** envoyer une photo d'une espèce et recevoir une proposition d'identification avec un score de confiance, **afin de** savoir ce que j'ai observé sans devoir le rechercher moi-même.
 
@@ -178,7 +178,7 @@ _(PBS : Backend & IA → IAS ; Application Mobile → UI4)_
 
 #### 2.4 · Pipeline de validation des contributions
 
-`Feature` · `Backend / IA` · **Should** · Owner : 🔎 Recrue 2 (workflow) · Arthur J. (pré-validation IA)
+`Feature` · `Backend / IA` · **Should** · Owner : Alexis (workflow) · Lunelys (pré-validation IA)
 
 > **En tant que** randonneur contributeur, **je peux** soumettre une observation et être notifié de son statut de validation (IA puis, si besoin, modération humaine), **afin de** savoir si ma contribution est acceptée et me rapporte des points.
 
@@ -199,7 +199,7 @@ _(PBS : Application Mobile → COL1-COL3)_
 
 #### 3.1 · Herbier (collection flore)
 
-`Feature` · `Frontend` · **Must** · Owner : Lucas (UI) · Maxim/Yohan (BE) · Arthur J. (data)
+`Feature` · `Frontend` · **Must** · Owner : Lucas (UI) · Maxim/Yohan (BE) · Lunelys (data)
 
 > **En tant que** randonneur, **je peux** consulter ma collection d'espèces de flore découvertes façon "Pokédex", **afin de** suivre ma progression et retrouver mes observations passées.
 
@@ -227,7 +227,7 @@ _(PBS : Application Mobile → COL1-COL3)_
 
 #### 3.3 · Fiche espèce détaillée (commune herbier/bestiaire)
 
-`Feature` · `Frontend` · **Should** · Owner : Lucas (UI) · Arthur J. (data naturaliste)
+`Feature` · `Frontend` · **Should** · Owner : Lucas (UI) · Lunelys (data naturaliste)
 
 > **En tant que** randonneur, **je peux** consulter la fiche détaillée d'une espèce (infos naturalistes, statut de protection, conseils éthiques, mes photos personnelles, rareté communautaire) depuis l'herbier, le bestiaire ou une trace, **afin de** en apprendre davantage sur ce que j'ai observé.
 
@@ -242,7 +242,7 @@ _(PBS : Application Mobile → COL1-COL3)_
 
 #### 3.4 · Profil utilisateur (stats, historique)
 
-`Feature` · `Frontend / Backend` · **Must** · Owner : Lucas (UI) · Yohan (BE)
+`Feature` · `Frontend / Backend` · **Must** · Owner : Lucas (UI) · Yohan (BE) · Arthur J. (personnalisation)
 
 > **En tant que** randonneur, **je peux** consulter mon profil avec mes statistiques de collection et l'historique de mes randonnées, et modifier mes informations, **afin de** avoir une vue d'ensemble de ma progression.
 
@@ -312,11 +312,9 @@ _(PBS : Application Mobile → COL4, COL5)_
 
 _(PBS : Communauté & Modération → TEAM, FEED)_
 
-> ⚠️ Epic bloqué tant que le poste **Recrue 1 — Fullstack Communauté** n'est pas pourvu (voir [OBS.md](./OBS.md)). À défaut de recrutement, arbitrage du coordinateur pour réaffecter tout ou partie à Maxim/Yohan en réduisant le périmètre.
-
 #### 5.1 · Gestion des équipes / clans
 
-`Feature` · `Frontend / Backend` · **Should** · Owner : 🔎 Recrue 1 _(poste ouvert)_
+`Feature` · `Frontend / Backend` · **Should** · Owner : Hélène
 
 > **En tant que** randonneur, **je peux** créer une équipe, en devenir admin, inviter des membres et gérer leurs rôles, **afin de** jouer collectivement avec mes amis.
 
@@ -331,7 +329,7 @@ _(PBS : Communauté & Modération → TEAM, FEED)_
 
 #### 5.2 · Classement d'équipe
 
-`Feature` · `Backend` · **Should** · Owner : 🔎 Recrue 1 _(poste ouvert)_
+`Feature` · `Backend` · **Should** · Owner : Hélène
 
 > **En tant que** randonneur, **je peux** consulter le classement de mon équipe agrégeant les scores de ses membres, **afin de** suivre la performance collective.
 
@@ -345,7 +343,7 @@ _(PBS : Communauté & Modération → TEAM, FEED)_
 
 #### 5.3 · Fil communautaire
 
-`Feature` · `Frontend / Backend` · **Could** · Owner : 🔎 Recrue 1 _(poste ouvert)_
+`Feature` · `Frontend / Backend` · **Could** · Owner : Hélène
 
 > **En tant que** randonneur, **je peux** voir les contributions récentes des autres utilisateurs sur une trace, **afin de** me tenir informé de l'activité communautaire avant/pendant ma sortie.
 
@@ -363,11 +361,9 @@ _(PBS : Communauté & Modération → TEAM, FEED)_
 
 _(PBS : Communauté & Modération → MOD)_
 
-> ⚠️ Même dépendance que l'Epic 5 pour le poste **Recrue 2 — Fullstack Modération**.
-
 #### 6.1 · Dashboard de modération
 
-`Feature` · `Frontend / Backend` · **Should** · Owner : 🔎 Recrue 2 _(poste ouvert)_ · Arthur J. (file alimentée par l'IA)
+`Feature` · `Frontend / Backend` · **Should** · Owner : Alexis · Lunelys (file alimentée par l'IA)
 
 > **En tant que** modérateur, **je peux** consulter la file des contributions soumises et les valider ou rejeter en un clic, **afin de** garantir la qualité du contenu communautaire.
 
@@ -382,7 +378,7 @@ _(PBS : Communauté & Modération → MOD)_
 
 #### 6.2 · Signalement utilisateur
 
-`Feature` · `Frontend / Backend` · **Should** · Owner : 🔎 Recrue 2 _(poste ouvert)_
+`Feature` · `Frontend / Backend` · **Should** · Owner : Alexis
 
 > **En tant que** randonneur, **je peux** signaler une photo, une contribution ou un comportement problématique, **afin de** contribuer à un contenu communautaire sain.
 
@@ -396,7 +392,7 @@ _(PBS : Communauté & Modération → MOD)_
 
 #### 6.3 · Historique de modération
 
-`Feature` · `Backend` · **Could** · Owner : 🔎 Recrue 2 _(poste ouvert)_
+`Feature` · `Backend` · **Could** · Owner : Alexis
 
 > **En tant que** modérateur, **je peux** consulter et exporter l'historique de toutes les décisions de modération, **afin de** garantir la traçabilité et l'auditabilité des actions.
 
@@ -479,7 +475,7 @@ _(PBS : Backend & IA → API, IAS)_
 
 #### 8.2 · Micro-service identification d'espèces
 
-`Feature` · `IA` · **Should** · Owner : Arthur J.
+`Feature` · `IA` · **Should** · Owner : Lunelys
 
 > **En tant que** backend applicatif, **je peux** appeler un micro-service d'identification qui retourne une ou plusieurs espèces probables à partir d'une photo, **afin de** alimenter la fonctionnalité d'identification côté mobile (Story 2.3).
 
@@ -493,7 +489,7 @@ _(PBS : Backend & IA → API, IAS)_
 
 #### 8.3 · Micro-service recommandation de traces
 
-`Feature` · `IA` · **Could** · Owner : Arthur J.
+`Feature` · `IA` · **Could** · Owner : Lunelys
 
 > **En tant que** randonneur, **je peux** recevoir des suggestions de traces personnalisées selon mon profil, mon historique et mon score, **afin de** découvrir de nouvelles randonnées pertinentes.
 
@@ -507,7 +503,7 @@ _(PBS : Backend & IA → API, IAS)_
 
 #### 8.4 · Agrégation de données communautaires
 
-`Feature` · `IA / Backend` · **Should** · Owner : Arthur J. · Maxim
+`Feature` · `IA / Backend` · **Should** · Owner : Lunelys · Maxim
 
 > **En tant que** backend applicatif, **je peux** enrichir périodiquement les probabilités d'observation par espèce/zone à partir des contributions validées, **afin de** améliorer la pertinence des listes d'espèces observables (Story 2.2).
 
@@ -639,7 +635,7 @@ _(détaillé en Parties 3 et 4 de [WBS.md](./WBS.md) ; hors PBS actuel — ce n�
 
 #### 11.1 · Point d'intérêt communautaire (type "pokestop")
 
-`Feature` · `Frontend / Backend` · **Bonus** · Owner : Lucas (UI carte) · Maxim/Yohan (backend détection & scoring) · Recrue 1 (agrégation activité communautaire)
+`Feature` · `Frontend / Backend` · **Bonus** · Owner : Lucas (UI carte) · Maxim/Yohan (backend détection & scoring) · Hélène (agrégation activité communautaire)
 
 > **En tant que** randonneur, **je peux** découvrir des points d'intérêt communautaires — créés automatiquement par forte activité photo ou ajoutés manuellement — et gagner des points bonus en y prenant une photo, **afin de** être incité à explorer des zones populaires ou remarquables.
 
@@ -655,7 +651,7 @@ _(détaillé en Parties 3 et 4 de [WBS.md](./WBS.md) ; hors PBS actuel — ce n�
 
 #### 11.2 · Avatar personnalisable + compagnon animal
 
-`Feature` · `Frontend / Backend` · **Bonus** · Owner : Lucas/Arthur J. (UI/UX avatar, carte, logique d'obtention)
+`Feature` · `Frontend / Backend` · **Bonus** · Owner : Lucas / Arthur J. (UI/UX avatar, carte, logique d'obtention)
 
 > **En tant que** randonneur, **je peux** personnaliser mon avatar affiché sur la carte GPS et débloquer un compagnon animal en progressant dans mon herbier ou en complétant des missions, **afin de** renforcer mon attachement à ma progression — avec la possibilité de le désactiver dans les options si je le souhaite.
 
@@ -693,5 +689,4 @@ _(détaillé en Parties 3 et 4 de [WBS.md](./WBS.md) ; hors PBS actuel — ce n�
 2. Le contenu de la Story se copie tel quel dans le ticket : titre = titre de la Story, description = la phrase user story, checklist = critères d'acceptation.
 3. Chaque **tâche** listée dans la Partie 3 de [WBS.md](./WBS.md) peut devenir un sous-ticket dédié (règle « une tâche = un ticket = une branche = une PR », [DEVELOPMENT_PROCESS.md](./DEVELOPMENT_PROCESS.md)) si la Story est trop grosse pour un seul ticket.
 4. Sur chaque ticket : Assignee = Owner par défaut de la Story (réassignable), Labels = Type + Domaine, Priorité = reprise de la Story (jamais "No priority").
-5. Les Epics 5 et 6 restent en `Backlog` (non planifiés en Cycle) tant que les postes ouverts d'[OBS.md](./OBS.md) ne sont pas pourvus, sauf arbitrage du coordinateur pour réaffectation temporaire.
-6. L'Epic 11 (bonus) reste en `Backlog`, hors cycle, tant qu'il n'est pas formellement intégré à la PBS et arbitré par le coordinateur.
+5. L'Epic 11 (bonus) reste en `Backlog`, hors cycle, tant qu'il n'est pas formellement intégré à la PBS et arbitré par le coordinateur.

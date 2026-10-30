@@ -2,7 +2,7 @@
 
 ## Structure générale
 
-L'équipe compte **6 membres actifs** et **2 postes ouverts** (cible : 8 personnes). Florian assure la coordination générale. Chaque membre dispose d'une autonomie forte sur son périmètre ; les décisions d'architecture transversales sont prises collectivement entre les profils concernés.
+L'équipe compte **9 membres actifs**. Florian assure la coordination générale. Chaque membre dispose d'une autonomie forte sur son périmètre ; les décisions d'architecture transversales sont prises collectivement entre les profils concernés.
 
 ```mermaid
 graph TD
@@ -18,10 +18,11 @@ graph TD
     C --> C2["Maxim — Mobile natif & Backend"]
 
     D --> D1["Yohan — Backend & Tests E2E"]
-    D --> D2["🔎 Recrue 1 — Fullstack Communauté"]
-    D --> D3["🔎 Recrue 2 — Fullstack Modération"]
+    D --> D2["Hélène — Fullstack Communauté"]
+    D --> D3["Alexis — Fullstack Modération"]
 
-    E --> E1["Arthur J. — IA Espèces & Modération"]
+    E --> E1["Lunelys — IA Espèces & Modération"]
+    E --> E2["Arthur J. — Personnalisation du profil"]
 
     F --> F1["Florian — CI/CD & DevOps"]
     F --> F2["Arthur B. — Infra & Architecture"]
@@ -92,9 +93,9 @@ graph TD
 
 ---
 
-### Arthur J. — IA Espèces & Modération
+### Lunelys — IA Espèces & Modération
 
-**Périmètre :** identification d'espèces, vérification de contenu, personnalisation. Deux pipelines IA distincts selon le type de photo.
+**Périmètre :** identification d'espèces, vérification de contenu, recommandation de traces. Deux pipelines IA distincts selon le type de photo.
 
 | Responsabilité                    | Détail                                                                                           |
 | --------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -102,6 +103,17 @@ graph TD
 | Pipeline NSFW photos de trajet    | Vérification NSFW indépendante pour les photos postées en cours de randonnée (pipeline séparé)   |
 | Personnalisation & recommandation | Recommandation de traces selon historique, collections et score utilisateur                      |
 | API FastAPI                       | Endpoints `POST /identify`, `POST /verify`, `POST /recommend`, Pydantic models                  |
+
+---
+
+### Arthur J. — Personnalisation du profil
+
+**Périmètre :** personnalisation du profil utilisateur selon son activité, en lien avec les services IA de Lunelys.
+
+| Responsabilité             | Détail                                                                                                |
+| -------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Personnalisation du profil | Adaptation du profil utilisateur (préférences, contenus et suggestions mis en avant) selon l'activité |
+| Avatar & compagnon         | UI/UX de l'avatar sur la carte et logique d'obtention du compagnon animal (bonus, avec Lucas)         |
 
 ---
 
@@ -119,11 +131,11 @@ graph TD
 
 ---
 
-### 🔎 Recrue 1 — Fullstack Communauté _(poste ouvert)_
+### Hélène — Fullstack Communauté
 
-**Périmètre cible :** ownership du module communauté de bout en bout, backend et frontend.
+**Périmètre :** ownership du module communauté de bout en bout, backend et frontend.
 
-| Responsabilité attendue | Détail                                                              |
+| Responsabilité          | Détail                                                              |
 | ----------------------- | ------------------------------------------------------------------- |
 | Backend communauté      | Équipes / clans : création, invitations, rôles, gestion des membres |
 | Feed social             | Activité communautaire par trace, par équipe, par région            |
@@ -133,16 +145,16 @@ graph TD
 
 ---
 
-### 🔎 Recrue 2 — Fullstack Modération _(poste ouvert)_
+### Alexis — Fullstack Modération
 
-**Périmètre cible :** ownership du module modération de bout en bout — workflow humain de validation du contenu soumis par la communauté.
+**Périmètre :** ownership du module modération de bout en bout — workflow humain de validation du contenu soumis par la communauté.
 
-| Responsabilité attendue | Détail                                                                          |
+| Responsabilité          | Détail                                                                          |
 | ----------------------- | ------------------------------------------------------------------------------- |
 | Dashboard modération    | Écran de revue des photos soumises, actions accepter / rejeter, historique      |
 | Système de signalement  | Interface utilisateur pour signaler un contenu, file de traitement backend      |
 | Backend modération      | API validation / rejet de photos, gestion des signalements, historique          |
-| Intégration IA          | Consommation des résultats des pipelines Arthur J. pour alimenter la file humaine |
+| Intégration IA          | Consommation des résultats des pipelines de Lunelys pour alimenter la file humaine |
 
 ---
 
@@ -151,12 +163,12 @@ graph TD
 | Module                             | Owner UI  | Owner Backend       | Owner IA  |
 | ---------------------------------- | --------- | ------------------- | --------- |
 | Navigation GPS & Traces            | Lucas     | Maxim               | —         |
-| Espèces observables par trace      | Lucas     | Maxim               | Arthur J. |
-| Identification photo (flore/faune) | Lucas     | Maxim / Yohan       | Arthur J. |
-| Collections (herbier / bestiaire)  | Lucas     | Maxim / Yohan       | Arthur J. |
+| Espèces observables par trace      | Lucas     | Maxim               | Lunelys   |
+| Identification photo (flore/faune) | Lucas     | Maxim / Yohan       | Lunelys   |
+| Collections (herbier / bestiaire)  | Lucas     | Maxim / Yohan       | Lunelys   |
 | Scores & classements               | Lucas     | Maxim / Yohan       | —         |
-| Communauté & équipes               | Recrue 1  | Recrue 1            | —         |
-| Modération & signalements          | Recrue 2  | Recrue 2            | Arthur J. |
+| Communauté & équipes               | Hélène    | Hélène              | —         |
+| Modération & signalements          | Alexis    | Alexis              | Lunelys   |
 | Zones sensibles / cadre éthique    | Lucas     | Arthur B.           | —         |
 | Profil utilisateur                 | Lucas     | Yohan               | Arthur J. |
 | Infrastructure & DevOps            | —         | Arthur B. + Florian | —         |
@@ -179,13 +191,16 @@ graph TD
 
 ```mermaid
 graph LR
-    FE["Lucas · Maxim · R1 · R2\nFrontend & Mobile"]
-    BE["Backend\nMaxim · Yohan · R1 · R2"]
-    AJ["Arthur J.\nIA Espèces & Modération"]
+    FE["Lucas · Maxim · Hélène · Alexis\nFrontend & Mobile"]
+    BE["Backend\nMaxim · Yohan · Hélène · Alexis"]
+    AJ["Lunelys\nIA Espèces & Modération"]
+    PJ["Arthur J.\nPersonnalisation du profil"]
     DO["Florian + Arthur B.\nDevOps / Infra"]
 
     FE <-->|"API REST /api/v1/"| BE
     BE -->|"appels services IA"| AJ
+    BE -->|"personnalisation profil"| PJ
+    PJ -->|"suggestions IA"| AJ
     DO -->|"CI/CD & infrastructure"| FE
     DO -->|"CI/CD & infrastructure"| BE
     DO -->|"CI/CD & infrastructure"| AJ
@@ -193,6 +208,6 @@ graph LR
 
 - Le **Backend** est l'unique consommateur des services IA — le Frontend ne les appelle jamais directement.
 - **Maxim** contribue au backend et aux fonctionnalités natives mobile ; il apparaît des deux côtés de l'interface.
-- **Recrue 2** consomme les résultats des pipelines IA d'Arthur J. pour alimenter la file de modération humaine.
+- **Alexis** consomme les résultats des pipelines IA de Lunelys pour alimenter la file de modération humaine.
 - **Arthur B.** supervise l'architecture backend sans en être owner fonctionnel.
 - **Florian** n'est pas un intermédiaire obligatoire entre développeurs — les décisions locales restent autonomes.
