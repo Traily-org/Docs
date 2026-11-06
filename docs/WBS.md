@@ -17,7 +17,7 @@
 
 ## Concept
 
-L'utilisateur choisit une randonnée, suit sa trace GPS en temps réel, et découvre les espèces (plantes, animaux, insectes) observables sur le parcours selon la localisation, la saison et les données communautaires. Il photographie les espèces rencontrées : chaque photo validée rapporte des points et alimente ses collections personnelles (herbier, bestiaire). Les photos sont géolocalisées et épinglées sur la trace. L'utilsateur peux aussi proposer ses propres traces.
+L'utilisateur choisit une randonnée, suit sa trace GPS en temps réel, et découvre les espèces (plantes, animaux, insectes) observables sur le parcours selon la localisation, la saison et les données communautaires. Il photographie les espèces rencontrées : chaque photo validée rapporte des points, et les plantes identifiées alimentent son herbier. Les photos sont géolocalisées et épinglées sur la trace. L'utilsateur peux aussi proposer ses propres traces.
 
 Un système de leaderboards (par randonnée, région, équipe) et de clans permet la compétition entre randonneurs. Un module de modération communautaire valide les contributions. L'app intègre un cadre éthique sur le respect des habitats sauvages.
 
@@ -39,14 +39,14 @@ Randonneur occasionnel ou régulier, curieux de nature, qui veut une expérience
 
 1. **Socle randonnée** — GPS, traces, difficulté, photo géolocalisée
 2. **Système d'espèces** — référentiel, listes observables, identification IA, validation
-3. **Collections personnelles** — herbier, bestiaire, profil
+3. **Collections personnelles** — herbier, profil
 4. **Gamification** — points, badges, leaderboards
 5. **Communauté & Équipes** — clans, classements, fil communautaire
 6. **Modération** — dashboard, signalement, historique
 7. **Cadre éthique & sécurité** — zones protégées, alertes, pédagogie
 8. **Backend & IA** — APIs cœur, micro-services, agrégation de données
 9. **Infrastructure** — stockage, CI/CD, monitoring, environnements
-10. **Gestion de projet & qualité** — pilotage, tests, déploiement
+10. **Gestion de projet & qualité** — pilotage, tests, déploiement, documentation projet
 11. **Fonctionnalités bonus (hors MVP)** — point d'intérêt communautaire, avatar & compagnon, portage SmartWatch _(non prioritaire pour le MVP v1 — voir [BACKLOG.md](./BACKLOG.md) Epic 11)_
 
 ---
@@ -72,7 +72,6 @@ Traily — Application mobile v1 (MVP)
 │
 ├── 3. Collections personnelles
 │   ├── Herbier
-│   ├── Bestiaire
 │   └── Profil utilisateur
 │
 ├── 4. Gamification
@@ -110,7 +109,8 @@ Traily — Application mobile v1 (MVP)
 ├── 10. Gestion projet & qualité
 │   ├── Pilotage projet
 │   ├── Tests
-│   └── Déploiement & lancement
+│   ├── Déploiement & lancement
+│   └── Documentation projet
 │
 └── 11. Fonctionnalités bonus (hors MVP)
     ├── Point d'intérêt communautaire
@@ -343,19 +343,9 @@ Traily — Application mobile v1 (MVP)
 - Logique d'ajout automatique à l'herbier lors d'une validation de contribution
 - Filtres et tri de l'herbier (par famille, rareté, date de découverte)
 
-### 3.2 Bestiaire (collection faune/insectes)
+### 3.3 Fiche espèce détaillée
 
-**Livrable** : Écran bestiaire fonctionnel, équivalent à l'herbier pour la faune/insectes.
-
-**Tâches :**
-
-- Réutilisation du modèle de collection pour faune/insectes
-- Interface type "Pokédex" dédiée (différenciation visuelle flore/faune)
-- Logique d'ajout automatique au bestiaire lors d'une validation
-
-### 3.3 Fiche espèce détaillée (commune herbier/bestiaire)
-
-**Livrable** : Écran fiche espèce complet, accessible depuis l'herbier, le bestiaire ou une trace.
+**Livrable** : Écran fiche espèce complet, accessible depuis l'herbier ou une trace.
 
 **Tâches :**
 
@@ -653,6 +643,19 @@ Traily — Application mobile v1 (MVP)
 - Rédaction de la documentation utilisateur
 - Plan de communication de lancement
 
+### 10.4 Documentation projet
+
+**Livrable** : Documentation projet à jour, versionnée dans le dépôt `docs` et accessible à toute l'équipe.
+
+**Tâches :**
+
+- Rédaction des documents de cadrage (PBS, WBS, OBS, backlog initial)
+- Rédaction des documents de process et de qualité (process de développement, Definition of Done, Quality Plans, guide Linear, outils)
+- Rédaction de la documentation technique (architecture, exigences matérielles)
+- Guide d'ordre de lecture des documents
+- Mise à jour de la documentation concernée à chaque PR modifiant une interface ou un comportement
+- Synchronisation du dépôt miroir de la documentation
+
 ---
 
 ## 11. Fonctionnalités bonus (hors MVP)
@@ -679,7 +682,7 @@ Traily — Application mobile v1 (MVP)
 
 - Interface de personnalisation d'avatar (apparence de base)
 - Affichage temps réel de l'avatar sur l'écran carte pendant la session GPS
-- Définition des conditions de déblocage du compagnon (progression herbier/bestiaire, missions)
+- Définition des conditions de déblocage du compagnon (progression herbier, missions)
 - Logique d'attribution et de suivi visuel du compagnon sur la carte
 - Réglage dans les Paramètres pour activer/désactiver l'affichage du compagnon (persistant)
 
@@ -862,22 +865,9 @@ Traily — Application mobile v1 (MVP)
 - Pourcentage de complétion exact par rapport au référentiel local
 - Filtres/tri fonctionnels sur une collection de test de 100+ espèces
 
-### 3.2 Bestiaire (collection faune/insectes)
-
-**Résumé** : Collection personnelle des espèces de faune/insectes découvertes, équivalent du herbier.
-
-**Exigences fonctionnelles**
-
-- Toutes les espèces de faune/insectes découvertes et validées apparaissent dans le bestiaire
-- Différenciation visuelle claire avec l'herbier
-
-**Critères d'acceptation**
-
-- Mêmes critères que 3.1, appliqués à la faune/insectes
-
 ### 3.3 Fiche espèce détaillée
 
-**Résumé** : Fiche détaillée d'une espèce, commune à l'herbier, au bestiaire et aux traces.
+**Résumé** : Fiche détaillée d'une espèce, accessible depuis l'herbier et les traces.
 
 **Exigences fonctionnelles**
 
@@ -1281,6 +1271,22 @@ Traily — Application mobile v1 (MVP)
 - Documentation utilisateur couvrant 100% des fonctionnalités principales du MVP
 - Lancement accompagné d'au moins un canal de communication actif
 
+### 10.4 Documentation projet
+
+**Résumé** : Documentation interne du projet (cadrage, organisation, process, qualité, technique), tenue à jour tout au long du projet.
+
+**Exigences fonctionnelles**
+
+- Chaque document a un rôle clair et un owner identifié
+- Un guide indique l'ordre de lecture et le contenu de chaque document
+- La documentation reflète l'organisation et le fonctionnement réels de l'équipe
+
+**Critères d'acceptation**
+
+- OBS et process de développement alignés sur l'organisation réelle à chaque Sprint Review
+- Toute PR modifiant une interface ou un comportement inclut la mise à jour du document concerné
+- Dépôt miroir synchronisé avec le dépôt principal (aucun écart détecté par la vérification)
+
 ---
 
 ## 11. Fonctionnalités bonus (hors MVP)
@@ -1312,14 +1318,14 @@ Traily — Application mobile v1 (MVP)
 **Exigences fonctionnelles**
 
 - L'avatar utilisateur est personnalisable et visible en temps réel sur l'écran carte pendant la randonnée
-- Le compagnon animal se débloque selon des conditions de progression (herbier/bestiaire et/ou missions)
+- Le compagnon animal se débloque selon des conditions de progression (herbier et/ou missions)
 - Le compagnon suit visuellement la position de l'utilisateur sur la carte pendant la session GPS
 - L'affichage du compagnon peut être désactivé dans les Paramètres, de façon persistante
 
 **Critères d'acceptation**
 
 - L'avatar utilisateur est personnalisable (a minima : apparence de base) et visible en temps réel sur l'écran carte pendant la randonnée
-- Le compagnon animal se débloque selon des conditions définies (progression herbier/bestiaire et/ou missions), de façon cohérente sur 100% des cas testés
+- Le compagnon animal se débloque selon des conditions définies (progression herbier et/ou missions), de façon cohérente sur 100% des cas testés
 - Le compagnon suit visuellement la position de l'utilisateur sur la carte pendant la session GPS
 - Un réglage dans les Paramètres permet d'activer/désactiver l'affichage du compagnon, persistant entre les sessions
 
