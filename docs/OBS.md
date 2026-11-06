@@ -18,11 +18,11 @@ graph TD
     C --> C2["Maxim — Mobile natif & Backend"]
 
     D --> D1["Yohan — Backend & Tests E2E"]
+    D --> D4["Arthur J. — Domaine utilisateur & Profil"]
     D --> D2["Hélène — Fullstack Communauté"]
     D --> D3["Alexis — Fullstack Modération"]
 
     E --> E1["Lunelys — IA Espèces & Modération"]
-    E --> E2["Arthur J. — Personnalisation du profil"]
 
     F --> F1["Florian — CI/CD & DevOps"]
     F --> F2["Arthur B. — Infra & Architecture"]
@@ -85,7 +85,6 @@ graph TD
 | Responsabilité      | Détail                                                                            |
 | ------------------- | --------------------------------------------------------------------------------- |
 | Backend Go          | Endpoints API REST, handlers, middlewares, logique métier                         |
-| Domaine utilisateur | Authentification, profils, historique de randonnées, sessions                     |
 | Domaine scores      | Calcul de points par action utilisateur, classements, persistance (partagé Maxim) |
 | Tests E2E           | Stratégie, implémentation et maintenance des tests end-to-end                     |
 | CI jobs E2E         | Configuration des jobs CI dédiés aux tests E2E                                    |
@@ -106,12 +105,13 @@ graph TD
 
 ---
 
-### Arthur J. — Personnalisation du profil
+### Arthur J. — Domaine utilisateur & Profil
 
-**Périmètre :** personnalisation du profil utilisateur selon son activité, en lien avec les services IA de Lunelys.
+**Périmètre :** domaine utilisateur côté backend (comptes, authentification, profils, sessions) et personnalisation du profil selon l'activité, en lien avec les services IA de Lunelys.
 
 | Responsabilité             | Détail                                                                                                |
 | -------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Domaine utilisateur        | Authentification, profils, historique de randonnées, sessions                                         |
 | Personnalisation du profil | Adaptation du profil utilisateur (préférences, contenus et suggestions mis en avant) selon l'activité |
 | Avatar & compagnon         | UI/UX de l'avatar sur la carte et logique d'obtention du compagnon animal (bonus, avec Lucas)         |
 
@@ -170,7 +170,7 @@ graph TD
 | Communauté & équipes               | Hélène    | Hélène              | —         |
 | Modération & signalements          | Alexis    | Alexis              | Lunelys   |
 | Zones sensibles / cadre éthique    | Lucas     | Arthur B.           | —         |
-| Profil utilisateur                 | Lucas     | Yohan               | Arthur J. |
+| Profil utilisateur                 | Lucas     | Arthur J.           | Arthur J. |
 | Infrastructure & DevOps            | —         | Arthur B. + Florian | —         |
 
 ---
@@ -192,15 +192,12 @@ graph TD
 ```mermaid
 graph LR
     FE["Lucas · Maxim · Hélène · Alexis\nFrontend & Mobile"]
-    BE["Backend\nMaxim · Yohan · Hélène · Alexis"]
+    BE["Backend\nMaxim · Yohan · Arthur J. · Hélène · Alexis"]
     AJ["Lunelys\nIA Espèces & Modération"]
-    PJ["Arthur J.\nPersonnalisation du profil"]
     DO["Florian + Arthur B.\nDevOps / Infra"]
 
     FE <-->|"API REST /api/v1/"| BE
     BE -->|"appels services IA"| AJ
-    BE -->|"personnalisation profil"| PJ
-    PJ -->|"suggestions IA"| AJ
     DO -->|"CI/CD & infrastructure"| FE
     DO -->|"CI/CD & infrastructure"| BE
     DO -->|"CI/CD & infrastructure"| AJ
