@@ -55,7 +55,7 @@ graph TD
 | Architecture front      | Structure des composants, navigation, design system, conventions TypeScript             |
 | Écrans principaux       | Accueil, carte, profil utilisateur, fiche trail, paramètres                             |
 | Écrans scores           | Affichage du score utilisateur, historique de points, classements (trace/région/équipe) |
-| Écrans collections      | Herbier et bestiaire — liste, fiche détail, ajout d'observation                         |
+| Écrans collections      | Herbier — liste, fiche détail, ajout d'observation                                      |
 | Écrans espèces          | Liste des espèces observables par trace, fiche espèce, carte de distribution            |
 | Alertes zones sensibles | Overlay carte zones protégées, messages d'avertissement contextuels                     |
 
@@ -165,7 +165,7 @@ graph TD
 | Navigation GPS & Traces            | Lucas     | Maxim               | —         |
 | Espèces observables par trace      | Lucas     | Maxim               | Lunelys   |
 | Identification photo (flore/faune) | Lucas     | Maxim / Yohan       | Lunelys   |
-| Collections (herbier / bestiaire)  | Lucas     | Maxim / Yohan       | Lunelys   |
+| Collections (herbier)              | Lucas     | Maxim / Yohan       | Lunelys   |
 | Scores & classements               | Lucas     | Maxim / Yohan       | —         |
 | Communauté & équipes               | Hélène    | Hélène              | —         |
 | Modération & signalements          | Alexy     | Alexy               | Lunelys   |

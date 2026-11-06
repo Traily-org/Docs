@@ -17,7 +17,7 @@
 
 ## Concept
 
-L'utilisateur choisit une randonnée, suit sa trace GPS en temps réel, et découvre les espèces (plantes, animaux, insectes) observables sur le parcours selon la localisation, la saison et les données communautaires. Il photographie les espèces rencontrées : chaque photo validée rapporte des points et alimente ses collections personnelles (herbier, bestiaire). Les photos sont géolocalisées et épinglées sur la trace. L'utilsateur peux aussi proposer ses propres traces.
+L'utilisateur choisit une randonnée, suit sa trace GPS en temps réel, et découvre les espèces (plantes, animaux, insectes) observables sur le parcours selon la localisation, la saison et les données communautaires. Il photographie les espèces rencontrées : chaque photo validée rapporte des points, et les plantes identifiées alimentent son herbier. Les photos sont géolocalisées et épinglées sur la trace. L'utilsateur peux aussi proposer ses propres traces.
 
 Un système de leaderboards (par randonnée, région, équipe) et de clans permet la compétition entre randonneurs. Un module de modération communautaire valide les contributions. L'app intègre un cadre éthique sur le respect des habitats sauvages.
 
@@ -39,7 +39,7 @@ Randonneur occasionnel ou régulier, curieux de nature, qui veut une expérience
 
 1. **Socle randonnée** — GPS, traces, difficulté, photo géolocalisée
 2. **Système d'espèces** — référentiel, listes observables, identification IA, validation
-3. **Collections personnelles** — herbier, bestiaire, profil
+3. **Collections personnelles** — herbier, profil
 4. **Gamification** — points, badges, leaderboards
 5. **Communauté & Équipes** — clans, classements, fil communautaire
 6. **Modération** — dashboard, signalement, historique
@@ -72,7 +72,6 @@ Traily — Application mobile v1 (MVP)
 │
 ├── 3. Collections personnelles
 │   ├── Herbier
-│   ├── Bestiaire
 │   └── Profil utilisateur
 │
 ├── 4. Gamification
@@ -344,19 +343,9 @@ Traily — Application mobile v1 (MVP)
 - Logique d'ajout automatique à l'herbier lors d'une validation de contribution
 - Filtres et tri de l'herbier (par famille, rareté, date de découverte)
 
-### 3.2 Bestiaire (collection faune/insectes)
+### 3.3 Fiche espèce détaillée
 
-**Livrable** : Écran bestiaire fonctionnel, équivalent à l'herbier pour la faune/insectes.
-
-**Tâches :**
-
-- Réutilisation du modèle de collection pour faune/insectes
-- Interface type "Pokédex" dédiée (différenciation visuelle flore/faune)
-- Logique d'ajout automatique au bestiaire lors d'une validation
-
-### 3.3 Fiche espèce détaillée (commune herbier/bestiaire)
-
-**Livrable** : Écran fiche espèce complet, accessible depuis l'herbier, le bestiaire ou une trace.
+**Livrable** : Écran fiche espèce complet, accessible depuis l'herbier ou une trace.
 
 **Tâches :**
 
@@ -693,7 +682,7 @@ Traily — Application mobile v1 (MVP)
 
 - Interface de personnalisation d'avatar (apparence de base)
 - Affichage temps réel de l'avatar sur l'écran carte pendant la session GPS
-- Définition des conditions de déblocage du compagnon (progression herbier/bestiaire, missions)
+- Définition des conditions de déblocage du compagnon (progression herbier, missions)
 - Logique d'attribution et de suivi visuel du compagnon sur la carte
 - Réglage dans les Paramètres pour activer/désactiver l'affichage du compagnon (persistant)
 
@@ -876,22 +865,9 @@ Traily — Application mobile v1 (MVP)
 - Pourcentage de complétion exact par rapport au référentiel local
 - Filtres/tri fonctionnels sur une collection de test de 100+ espèces
 
-### 3.2 Bestiaire (collection faune/insectes)
-
-**Résumé** : Collection personnelle des espèces de faune/insectes découvertes, équivalent du herbier.
-
-**Exigences fonctionnelles**
-
-- Toutes les espèces de faune/insectes découvertes et validées apparaissent dans le bestiaire
-- Différenciation visuelle claire avec l'herbier
-
-**Critères d'acceptation**
-
-- Mêmes critères que 3.1, appliqués à la faune/insectes
-
 ### 3.3 Fiche espèce détaillée
 
-**Résumé** : Fiche détaillée d'une espèce, commune à l'herbier, au bestiaire et aux traces.
+**Résumé** : Fiche détaillée d'une espèce, accessible depuis l'herbier et les traces.
 
 **Exigences fonctionnelles**
 
@@ -1342,14 +1318,14 @@ Traily — Application mobile v1 (MVP)
 **Exigences fonctionnelles**
 
 - L'avatar utilisateur est personnalisable et visible en temps réel sur l'écran carte pendant la randonnée
-- Le compagnon animal se débloque selon des conditions de progression (herbier/bestiaire et/ou missions)
+- Le compagnon animal se débloque selon des conditions de progression (herbier et/ou missions)
 - Le compagnon suit visuellement la position de l'utilisateur sur la carte pendant la session GPS
 - L'affichage du compagnon peut être désactivé dans les Paramètres, de façon persistante
 
 **Critères d'acceptation**
 
 - L'avatar utilisateur est personnalisable (a minima : apparence de base) et visible en temps réel sur l'écran carte pendant la randonnée
-- Le compagnon animal se débloque selon des conditions définies (progression herbier/bestiaire et/ou missions), de façon cohérente sur 100% des cas testés
+- Le compagnon animal se débloque selon des conditions définies (progression herbier et/ou missions), de façon cohérente sur 100% des cas testés
 - Le compagnon suit visuellement la position de l'utilisateur sur la carte pendant la session GPS
 - Un réglage dans les Paramètres permet d'activer/désactiver l'affichage du compagnon, persistant entre les sessions
 
