@@ -20,7 +20,7 @@ graph TD
     D --> D1["Yohan — Backend & Tests E2E"]
     D --> D4["Arthur J. — Domaine utilisateur & Profil"]
     D --> D2["Hélène — Fullstack Communauté"]
-    D --> D3["Alexis — Fullstack Modération"]
+    D --> D3["Alexy — Fullstack Modération"]
 
     E --> E1["Lunelys — IA Espèces & Modération"]
 
@@ -145,7 +145,7 @@ graph TD
 
 ---
 
-### Alexis — Fullstack Modération
+### Alexy — Fullstack Modération
 
 **Périmètre :** ownership du module modération de bout en bout — workflow humain de validation du contenu soumis par la communauté.
 
@@ -168,7 +168,7 @@ graph TD
 | Collections (herbier / bestiaire)  | Lucas     | Maxim / Yohan       | Lunelys   |
 | Scores & classements               | Lucas     | Maxim / Yohan       | —         |
 | Communauté & équipes               | Hélène    | Hélène              | —         |
-| Modération & signalements          | Alexis    | Alexis              | Lunelys   |
+| Modération & signalements          | Alexy     | Alexy               | Lunelys   |
 | Zones sensibles / cadre éthique    | Lucas     | Arthur B.           | —         |
 | Profil utilisateur                 | Lucas     | Arthur J.           | Arthur J. |
 | Infrastructure & DevOps            | —         | Arthur B. + Florian | —         |
@@ -191,8 +191,8 @@ graph TD
 
 ```mermaid
 graph LR
-    FE["Lucas · Maxim · Hélène · Alexis\nFrontend & Mobile"]
-    BE["Backend\nMaxim · Yohan · Arthur J. · Hélène · Alexis"]
+    FE["Lucas · Maxim · Hélène · Alexy\nFrontend & Mobile"]
+    BE["Backend\nMaxim · Yohan · Arthur J. · Hélène · Alexy"]
     AJ["Lunelys\nIA Espèces & Modération"]
     DO["Florian + Arthur B.\nDevOps / Infra"]
 
@@ -205,6 +205,6 @@ graph LR
 
 - Le **Backend** est l'unique consommateur des services IA — le Frontend ne les appelle jamais directement.
 - **Maxim** contribue au backend et aux fonctionnalités natives mobile ; il apparaît des deux côtés de l'interface.
-- **Alexis** consomme les résultats des pipelines IA de Lunelys pour alimenter la file de modération humaine.
+- **Alexy** consomme les résultats des pipelines IA de Lunelys pour alimenter la file de modération humaine.
 - **Arthur B.** supervise l'architecture backend sans en être owner fonctionnel.
 - **Florian** n'est pas un intermédiaire obligatoire entre développeurs — les décisions locales restent autonomes.
