@@ -15,7 +15,7 @@ Sprint (4 semaines)
 │
 ├── Vendredis 1 à 3 — Développement
 │   ├── Travail autonome par domaine (frontend / backend / IA / devops)
-│   └── Point Linear de 10 min (board du cycle + % du FU en cours)
+│   └── Weekly standup / Point Linear de 10 min (board du cycle + % du FU en cours)
 │
 └── Vendredi 4 — Sprint Review + Rétrospective + Sprint Planning
     ├── Démonstration des fonctionnalités livrées
@@ -30,12 +30,12 @@ Sprint (4 semaines)
 | Cérémonie | Fréquence | Objectif |
 |---|---|---|
 | **Sprint Planning** | Dernier vendredi du sprint précédent | Prioriser et découper le backlog, distribuer les tâches |
-| **Point Linear** | Chaque vendredi | 10 min sur le board du cycle et le % du FU en cours |
+| **Weekly standup (Point Linear)** | Chaque vendredi | 10 min sur le board du cycle et le % du FU en cours ; chaque membre dit ce qu'il a fait, ce qu'il prévoit et ses blocages |
 | **Sprint Review** | Fin de chaque sprint | Valider ce qui a été livré, ajuster les priorités du prochain sprint |
 | **Rétrospective** | Fin de chaque sprint | Identifier ce qui a bien fonctionné et ce qui doit changer dans le process |
 | **Syncs ad hoc** | À la demande | Déblocage ponctuel, décision d'architecture impactant plusieurs membres |
 
-Pas de daily standup — la communication passe par les PRs, les commentaires de code et les syncs à la demande.
+Pas de daily standup : le suivi régulier se fait lors du **weekly standup** du vendredi (Point Linear). Entre deux weeklies, la communication passe par les PRs, les commentaires de code, Discord et les syncs à la demande.
 
 ---
 

@@ -34,7 +34,6 @@ graph TD
         CAM --> CAM4["Visibilité de la photo (privé / amis / public)"]
 
         COL --> COL1["Herbier (collection flore)"]
-        COL --> COL2["Bestiaire (collection faune/insectes)"]
         COL --> COL3["Profil utilisateur & statistiques"]
         COL --> COL4["Système de points et badges"]
         COL --> COL5["Classements (trace / région / équipe)"]
