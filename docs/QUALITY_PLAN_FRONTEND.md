@@ -14,6 +14,7 @@ Application mobile construite avec **Expo** (React Native) en **TypeScript**. El
 - **[Conventional Commits](https://www.conventionalcommits.org/)** pour les messages de commit
 - Pas de `any` — utiliser `unknown` et des type guards si le type est inconnu
 - `interface` pour les contrats publics (props, services), `type` pour les unions et aliases
+- **Fichiers en kebab-case**, composants compris : `trail-card.tsx` exporte `TrailCard`, `location-service.ts` exporte le service. Raisons : norme du template Expo, routes Expo Router déjà en kebab-case (ce sont des URL), pas de conflit de casse Git entre macOS / Windows et Linux. Décision : TRA-120.
 
 ---
 
@@ -65,8 +66,8 @@ Valable à l'intérieur de chaque feature :
 
 ## Fonctions natives
 
-- **GPS** : toute la logique dans `locationService.ts`. Permission explicite demandée avant accès. Tracking background via `expo-location`.
-- **Caméra** : toute la logique dans `photoService.ts`. Photos compressées avant upload (qualité max 0.7, résolution max 1920px).
+- **GPS** : toute la logique dans un service de localisation (`services/location-service.ts` de sa feature). Permission explicite demandée avant accès. Tracking background via `expo-location`.
+- **Caméra** : toute la logique dans un service photo (`services/photo-service.ts` de sa feature). Photos compressées avant upload (qualité max 0.7, résolution max 1920px).
 - **Offline** : détection réseau via `expo-network`, persistance des données critiques en SQLite via `expo-sqlite`, synchronisation à la reconnexion.
 
 ---
