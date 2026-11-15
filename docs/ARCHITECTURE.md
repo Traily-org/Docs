@@ -95,17 +95,16 @@ Utilisateur hors ligne
 
 ### Structure des dossiers
 
+Rangement **par feature d'abord** (TRA-120). Détail et règles d'import : [QUALITY_PLAN_FRONTEND.md](./QUALITY_PLAN_FRONTEND.md#structure-des-dossiers).
+
 ```
-app/                    # Routes (Expo Router, file-based)
+app/                    # Routes (Expo Router, file-based), fines : elles assemblent les features
 src/
-  components/           # Composants UI réutilisables
-  hooks/                # Hooks custom (logique réutilisable)
-  services/             # Logique métier, appels API, natif
-  store/                # État global (Zustand)
-  types/                # Types TypeScript
-  constants/            # Thème, config, messages d'erreur
-  utils/                # Fonctions pures utilitaires
-  lib/                  # Clients configurés (API, storage)
+  features/<feature>/   # Tout le code d'une zone de l'app : components/, hooks/, services/, index.ts
+  components/           # UI générique sans métier
+  hooks/                # Hooks partagés
+  constants/            # Rôles de couleur du thème, typographies, config
+  store/  lib/  types/  utils/   # Partagé, créés à la demande
 ```
 
 ---
