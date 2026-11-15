@@ -37,6 +37,7 @@ src/
   components/           # UI générique sans métier (lignes de liste, boutons…)
   hooks/                # Hooks partagés (thème…)
   constants/
+    theme-colors.ts     # Rôles de couleur clairs / sombres (source unique du thème)
     theme.ts            # Typographies, espacements
     config.ts           # Réglages (URLs, timeouts)
   store/  lib/  types/  utils/   # Partagé, créés à la demande
@@ -61,6 +62,15 @@ Valable à l'intérieur de chaque feature :
 - **Hooks** : orchestration état local + appels services — pas de JSX
 - **Services** : logique métier, appels API, transformations — pas de state React
 - **Store** : état global partagé entre écrans — pas de logique métier
+
+### Couleurs et thème
+
+- Les composants utilisent uniquement des **rôles** de couleur : `bg-surface`, `text-foreground`, `text-foreground-muted`… Jamais `gray-*`, `white` ni une couleur hexadécimale : elles ne suivent pas le mode sombre.
+- Les rôles et leurs valeurs claire et sombre sont définis une seule fois, dans `src/constants/theme-colors.ts`. Un nouveau rôle a toujours les deux valeurs.
+- L'utilisateur choisit Système, Clair ou Sombre dans les Paramètres ; « Système » suit l'appareil.
+- ESLint signale les couleurs en dur : bloquant sur les fichiers déjà passés au thème, avertissement ailleurs.
+
+Décision : TRA-126.
 
 ---
 
