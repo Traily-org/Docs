@@ -19,51 +19,42 @@ Application mobile construite avec **Expo** (React Native) en **TypeScript**. El
 
 ## Structure des dossiers
 
+Le code est rangé **par feature d'abord** : un dossier par zone du schéma de navigation (carte, rando, capture, espèces…). Décision : TRA-120.
+
 ```
-app/                    # Expo Router — routes (file-based routing)
-  (auth)/               # Routes authentifiées
+app/                    # Routes Expo Router (file-based), fines : elles assemblent les features
+  (app)/                # App connectée : carte (index), paramètres, profil, rando…
   (public)/             # Routes publiques (login, register)
-  _layout.tsx
+  _layout.tsx           # Racine : thème + navigation
 
 src/
-  components/           # Composants UI réutilisables (présentationnels)
-    common/
-    trail/
-    map/
-    species/
-    gamification/
-
-  hooks/                # Hooks custom (logique réutilisable)
-
-  services/             # Logique métier et appels API
-    trailService.ts
-    authService.ts
-    locationService.ts
-    photoService.ts
-    offlineService.ts
-    speciesService.ts
-
-  store/                # État global (Zustand)
-
-  types/                # Types et interfaces TypeScript
-    trail.ts
-    user.ts
-    species.ts
-    api.ts              # Types des réponses API
-
+  features/<feature>/   # Tout le code d'une zone de l'app (map, trails, hike-session, settings…)
+    index.ts            # API publique de la feature
+    components/         # Sous-dossiers créés à la demande, jamais vides
+    hooks/
+    services/
+  components/           # UI générique sans métier (lignes de liste, boutons…)
+  hooks/                # Hooks partagés (thème…)
   constants/
-    theme.ts            # Couleurs, typographies, espacements
-    config.ts           # URLs, timeouts
-    errors.ts           # Messages d'erreur centralisés
-
-  utils/                # Fonctions utilitaires pures
-
-  lib/
-    api.ts              # Client HTTP configuré
-    storage.ts          # Wrapper AsyncStorage / SQLite
+    theme.ts            # Typographies, espacements
+    config.ts           # Réglages (URLs, timeouts)
+  store/  lib/  types/  utils/   # Partagé, créés à la demande
 ```
 
+### Règles de rangement
+
+1. **Les routes `app/` restent fines** : elles importent un écran depuis `@/features/<x>` et le rendent, sans logique métier.
+2. **Une feature s'importe uniquement par son `index.ts`** : `@/features/species`, jamais `@/features/species/components/...`. À l'intérieur d'une feature, imports relatifs.
+3. **Le partagé n'importe jamais une feature** (`components`, `hooks`, `lib`, `store`, `constants`, `types`, `utils`).
+4. **Pas de cycle entre features** : les imports vont dans un seul sens.
+5. **Naviguer n'est pas importer** : on ouvre l'écran d'une autre feature avec `router.push(...)`, sans importer cet écran.
+6. **Un élément utilisé par 2 features reste dans la feature à laquelle il appartient**, exporté par son `index.ts`. Il ne monte dans le partagé que s'il n'a aucun métier (un bouton, un format de distance).
+
+Les règles 2, 3 et 4 sont vérifiées par ESLint, bloquant en CI.
+
 ### Séparation des responsabilités
+
+Valable à l'intérieur de chaque feature :
 
 - **Composants** : affichage uniquement — pas d'appels API directs
 - **Hooks** : orchestration état local + appels services — pas de JSX
